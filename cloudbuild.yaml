@@ -1,0 +1,23 @@
+steps:
+  - name: node:16
+    entrypoint: npm
+    args: ['install']
+    dir: 'frontend'
+
+  - name: node:16
+    entrypoint: npm
+    args: ['run', 'build']
+    dir: 'frontend'
+
+  - name: python
+    entrypoint: pip
+    args: ['install', '-r', 'requirements.txt', '--user']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args: ['-c', 'gcloud config set app/cloud_build_timeout 6000 && gcloud app deploy']
+
+timeout: 6000s
+
+options:
+  logging: CLOUD_LOGGING_ONLY

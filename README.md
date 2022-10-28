@@ -1,2 +1,4 @@
-# vue3-fastapi
-vue3 - fastapi
+# meta-crm
+
+보조 CRM 레포지토리입니다.
+yiy
